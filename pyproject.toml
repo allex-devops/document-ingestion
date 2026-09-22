@@ -5,13 +5,11 @@ description = "Turn PDFs, DOCX files and scans into clean, indexed, citable chun
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "python-docx>=1.1",
-    "ragchat",
-    "shared",
+    "chromadb>=1.0",
+    "httpx>=0.27",
+    "numpy>=1.26",
+    "pymupdf>=1.24",
 ]
-
-[tool.uv.sources]
-shared = { path = "../_shared", editable = true }
-ragchat = { path = "../foundationrag-chatbot", editable = true }
 
 [dependency-groups]
 dev = ["pytest>=8"]
@@ -21,7 +19,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/docingest"]
+packages = ["src/docingest", "src/ragchat", "src/shared"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
